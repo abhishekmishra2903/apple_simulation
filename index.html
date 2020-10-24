@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #chapter {
+        display: inline;
+        position: absolute;
+        top: 10px;
+        margin-inline-start: 10px;
+        font-family: "Source Sans Pro", sans-serif;
+        word-spacing: 4px;
+        color: white;
+      }
+      #logo {
+        position: absolute;
+        right: 25px;
+        top: 15px;
+      }
+      #canvas1 {
+        background-color: #d2d3c9;
+      }
+      button {
+        background-color: Transparent;
+        background-repeat: no-repeat;
+        border: none;
+        cursor: pointer;
+        overflow: hidden;
+        outline: none;
+      }
+      #foot {
+        display: block;
+        background-color: #16697a;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        left: -5px;
+        right: 0px;
+      }
+      #previous {
+        margin-left: 25px;
+        -webkit-border-radius: 18;
+        -moz-border-radius: 18;
+        border-radius: 18px;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 1rem;
+        background: #0e918c;
+        padding: 5px 20px 5px 20px;
+        text-decoration: none;
+      }
+
+      #previous:hover {
+        background: #5a98bf;
+        text-decoration: none;
+      }
+      #next {
+        right: 25px;
+        -webkit-border-radius: 18;
+        -moz-border-radius: 18;
+        border-radius: 18px;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 1rem;
+        background: #0e918c;
+        padding: 5px 35px 5px 35px;
+        text-decoration: none;
+      }
+
+      #next:hover {
+        background: #5a98bf;
+        text-decoration: none;
+      }
+      #option1:hover {
+        color: #d2d3c9;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      #option2:hover {
+        color: #d2d3c9;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      #option3:hover {
+        color: #d2d3c9;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      #page {
+        margin-top: 0px;
+        text-align: center;
+        font-family: "Source Sans Pro", sans-serif;
+        word-spacing: 4px;
+        font-weight: 300;
+        color: #d2d3c9;
+        font-size: 1.2rem;
+      }
+      p {
+        font-family: "Source Sans Pro", sans-serif;
+        word-spacing: 4px;
+        font-size: 1.4rem;
+        font-weight: 400;
+        color: white;
+      }
+      #topic {
+        font-family: "Source Sans Pro", sans-serif;
+        word-spacing: 4px;
+        color: white;
+      }
+    </style>
+  </head>
+  <body onload="reload()" style="background-color: #16697a">
+    <img id="tree" src="https://svgshare.com/i/Qe9.svg" style="display: none" />
+    <img
+      id="basket"
+      src="https://www.linkpicture.com/q/basket.png"
+      style="display: none"
+    />
+    <img
+      id="apple"
+      src="https://www.linkpicture.com/q/apple_3.png"
+      style="display: none"
+    />
+    <img
+      id="ground"
+      src="https://www.linkpicture.com/q/ground.png"
+      style="display: none"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <div id="container" style="margin-bottom: 30px; background-color: #16697a;">
+      <h3 id="chapter">1. Vector (part I)</h3>
+      <img
+        id="logo"
+        src="https://apple-simulation.s3.ap-south-1.amazonaws.com/logo50.png"
+      />
+      <hr style="margin-top: 80px" />
+      <h2 id="topic">1.1. Usual Addition:</h2>
+      <p>
+        On a fresh summer morning you decided to pick some apples from your
+        farm. You are picking a handful of them and placing them in your bucket.
+        So once you managed to pick 6, then 4 and then 3. So the total number of
+        apples in your basket is <span id="blank">______.</span>
+        <span id="option1"> [ <i>twelve</i> </span>
+        <span id="option2"> , <i>thirteen</i> </span>
+        <span id="option3"> , <i>fourteen</i> ]</span>
+      </p>
+      <p>
+        Try it out yourself using the activity below and click on the right
+        answer.
+      </p>
+    </div>
+    <div style="position:relative">
+      <canvas
+        id="canvas1"
+        height="640px"
+        width="1280px"
+        style="position: absolute; border: 1px solid; z-index: 0; left: 0px"
+      ></canvas>
+      <canvas
+        id="canvas2"
+        height="640px"
+        width="1280px"
+        style="position: absolute; border: 1px solid; z-index: 1; left: 0px"
+      ></canvas>
+      <canvas
+        id="canvas3"
+        height="640px"
+        width="1280px"
+        style="position: absolute; border: 1px solid; z-index: 2; left: 0px"
+      ></canvas>
+      <canvas
+        id="canvas4"
+        height="640px"
+        width="1280px"
+        style="position: absolute; border: 1px solid; z-index: 3; left: 0px"
+      ></canvas>
+      <button id="btn" style="position: absolute; z-index: 5"></button>
+      <button id="btn1" style="position: absolute; z-index: 6"></button>
+      <button id="btn2" style="position: absolute; z-index: 7"></button>
+      <button id="btn3" style="position: absolute; z-index: 8"></button>
+    </div>
+
+    <div id="foot" style="position: relative;">
+      <button id="previous" style="position: absolute"></button>
+
+      <h3 id="page">Page:01</h3>
+
+      <button id="next" style="position: absolute; top: 10px"></button>
+    </div>
+
+    <script>
+      document.getElementById("option1").addEventListener("click", function () {
+        document.getElementById("blank").innerHTML = "<u>twelve<u>";
+        document.getElementById("blank").style.color = "#F05454";
+        document.getElementById("blank").style.fontWeight = "800";
+      });
+      document.getElementById("option2").addEventListener("click", function () {
+        document.getElementById("blank").innerHTML = "<u>thirteen<u>";
+        document.getElementById("blank").style.color = "#03C4A1";
+        document.getElementById("blank").style.fontWeight = "800";
+      });
+      document.getElementById("option3").addEventListener("click", function () {
+        document.getElementById("blank").innerHTML = "<u>fourteen</u>";
+        document.getElementById("blank").style.color = "#F05454";
+        document.getElementById("blank").style.fontWeight = "800";
+      });
+      function reload() {
+        var tree1 = document.getElementById("tree");
+        var basket1 = document.getElementById("basket");
+        var ground1 = document.getElementById("ground");
+
+        var apple1 = document.getElementById("apple");
+        var apple2 = document.getElementById("apple");
+        var apple3 = document.getElementById("apple");
+        var apple4 = document.getElementById("apple");
+        var apple5 = document.getElementById("apple");
+        var apple6 = document.getElementById("apple");
+        var apple7 = document.getElementById("apple");
+        var apple8 = document.getElementById("apple");
+        var apple9 = document.getElementById("apple");
+        var apple10 = document.getElementById("apple");
+        var apple11 = document.getElementById("apple");
+        var apple12 = document.getElementById("apple");
+        var apple13 = document.getElementById("apple");
+
+        document.getElementById("canvas1").style.width =
+          window.innerWidth + "px";
+        document.getElementById("canvas2").style.width =
+          window.innerWidth + "px";
+        document.getElementById("canvas3").style.width =
+          window.innerWidth + "px";
+        document.getElementById("canvas4").style.width =
+          window.innerWidth + "px";
+
+        document.getElementById("btn1").style.width =
+          window.innerWidth * 0.2788 + "px";
+        document.getElementById("btn1").style.height =
+          window.innerWidth * 0.047 + "px";
+        document.getElementById("btn1").style.left =
+          window.innerWidth * 0.2059 + "px";
+        document.getElementById("btn1").style.top =
+          window.innerWidth * 0.0906 + "px";
+
+        document.getElementById("btn2").style.width =
+          window.innerWidth * 0.2788 + "px";
+        document.getElementById("btn2").style.height =
+          window.innerWidth * 0.047 + "px";
+        document.getElementById("btn2").style.left =
+          window.innerWidth * 0.2059 + "px";
+        document.getElementById("btn2").style.top =
+          window.innerWidth * 0.0906 + "px";
+
+        document.getElementById("btn3").style.width =
+          window.innerWidth * 0.2788 + "px";
+        document.getElementById("btn3").style.height =
+          window.innerWidth * 0.047 + "px";
+        document.getElementById("btn3").style.left =
+          window.innerWidth * 0.2059 + "px";
+        document.getElementById("btn3").style.top =
+          window.innerWidth * 0.0906 + "px";
+
+        document.getElementById("btn").style.width =
+          window.innerWidth * 0.2788 + "px";
+        document.getElementById("btn").style.height =
+          window.innerWidth * 0.047 + "px";
+        document.getElementById("btn").style.left =
+          window.innerWidth * 0.2059 + "px";
+        document.getElementById("btn").style.top =
+          window.innerWidth * 0.0906 + "px";
+
+        document.getElementById("foot").style.width = window.innerWidth + "px";
+        document.getElementById("foot").style.top=window.innerWidth/2+"px";
+        document.getElementById("next").innerHTML = "Next  >>>";
+        document.getElementById("previous").innerHTML = "<<<  Previous";
+
+        var canvas1 = document.getElementById("canvas1");
+        var context1 = canvas1.getContext("2d");
+        context1.drawImage(ground1, -10, 530, 1300, 150);
+        context1.drawImage(tree1, 700, 50, 500, 600);
+        context1.drawImage(basket1, 250, 500, 180, 60);
+
+        var canvas2 = document.getElementById("canvas2");
+        var context2 = canvas2.getContext("2d");
+        context2.drawImage(apple1, 800, 150);
+        context2.drawImage(apple2, 770, 300);
+        context2.drawImage(apple3, 1000, 120);
+        context2.drawImage(apple4, 1050, 250);
+        context2.drawImage(apple5, 1100, 200);
+        context2.drawImage(apple6, 900, 300);
+
+        var canvas3 = document.getElementById("canvas3");
+        var context3 = canvas3.getContext("2d");
+        context3.drawImage(apple7, 1120, 280);
+        context3.drawImage(apple8, 900, 90);
+        context3.drawImage(apple9, 970, 260);
+        context3.drawImage(apple10, 1050, 330);
+
+        var canvas4 = document.getElementById("canvas4");
+        var context4 = canvas4.getContext("2d");
+        context4.drawImage(apple11, 830, 220);
+        context4.drawImage(apple12, 900, 180);
+        context4.drawImage(apple13, 970, 170);
+
+        // context2.drawImage(apple1,270,480);
+        // context2.drawImage(apple2,320,480);
+        // context2.drawImage(apple3,300,486);
+        // context2.drawImage(apple4,360,480);
+        // context2.drawImage(apple5,340,488);
+        // context2.drawImage(apple6,380,486);
+
+        // context3.drawImage(apple7,295,450);
+        // context3.drawImage(apple8,340,450);
+        // context3.drawImage(apple9,315,456);
+        // context3.drawImage(apple10,355,456);
+
+        // context4.drawImage(apple11,315,420);
+        // context4.drawImage(apple12,345,424);
+        // context4.drawImage(apple13,328,390);
+
+        context1.beginPath();
+        context1.strokeStyle = "#0E918C";
+        context1.lineWidth = 60;
+        context1.lineCap = "round";
+        context1.moveTo(270, 145);
+        context1.lineTo(610, 145);
+        context1.stroke();
+
+        context1.fillStyle = "white";
+        context1.font = "italic 520 25px verdana";
+        context1.fillText("Click here to pluck 6 apples", 265, 152);
+
+        var i = 0;
+        document.getElementById("btn3").addEventListener("click", function () {
+          var n = setInterval(apple_move, 5);
+
+          function apple_move() {
+            if (i > 330) {
+              clearInterval(n);
+            } else {
+              context2.clearRect(0, 0, 1280, 640);
+              context2.drawImage(apple1, 800 - 1.606 * i, 150 + i);
+              context2.drawImage(apple2, 770 - 1.3636 * i, 300 + 0.5454 * i);
+              context2.drawImage(apple3, 1000 - 2.1212 * i, 120 + 1.1091 * i);
+              context2.drawImage(apple4, 1050 - 2.091 * i, 250 + 0.6969 * i);
+              context2.drawImage(apple5, 1100 - 2.3 * i, 200 + 0.8727 * i);
+              context2.drawImage(apple6, 900 - 1.8787 * i, 300 + 0.5656 * i);
+              i++;
+              if (i == 331) {
+                document.getElementById("btn3").remove();
+
+                context2.beginPath();
+                context2.strokeStyle = "#0E918C";
+                context2.lineWidth = 60;
+                context2.lineCap = "round";
+                context2.moveTo(270, 145);
+                context2.lineTo(610, 145);
+                context2.stroke();
+
+                context2.fillStyle = "white";
+                context2.font = "italic 520 25px verdana";
+                context2.fillText("Click here to pluck 4 apples", 265, 152);
+              }
+            }
+          }
+        });
+
+        var k = 0;
+        document.getElementById("btn2").addEventListener("click", function () {
+          var n = setInterval(apple_move, 10);
+
+          function apple_move() {
+            if (k > 170) {
+              clearInterval(n);
+            } else {
+              context3.clearRect(0, 0, 1280, 640);
+              context3.drawImage(apple7, 1120 - 4.853 * k, 280 + k);
+              context3.drawImage(apple8, 900 - 3.294 * k, 90 + 2.1176 * k);
+              context3.drawImage(apple9, 970 - 3.8529 * k, 260 + 1.1529 * k);
+              context3.drawImage(apple10, 1050 - 4.088 * k, 330 + 0.7412 * k);
+              k++;
+              if (k == 171) {
+                document.getElementById("btn2").remove();
+                context3.beginPath();
+                context3.strokeStyle = "#0E918C";
+                context3.lineWidth = 60;
+                context3.lineCap = "round";
+                context3.moveTo(270, 145);
+                context3.lineTo(610, 145);
+                context3.stroke();
+
+                context3.fillStyle = "white";
+                context3.font = "italic 520 25px verdana";
+                context3.fillText("Click here to pluck 3 apples", 265, 152);
+              }
+            }
+          }
+        });
+
+        var p = 0;
+        document.getElementById("btn1").addEventListener("click", function () {
+          var n = setInterval(apple_move, 6);
+
+          function apple_move() {
+            if (p > 220) {
+              clearInterval(n);
+            } else {
+              context4.clearRect(0, 0, 1280, 640);
+              context4.drawImage(apple11, 830 - 2.341 * p, 220 + 0.9091 * p);
+              context4.drawImage(apple12, 900 - 2.523 * p, 180 + 1.109 * p);
+              context4.drawImage(apple13, 970 - 2.918 * p, 170 + p);
+              p++;
+              if (p == 221) {
+                document.getElementById("btn1").remove();
+                context3.beginPath();
+                context3.strokeStyle = "#0E918C";
+                context3.lineWidth = 60;
+                context3.lineCap = "round";
+                context3.moveTo(270, 145);
+                context3.lineTo(610, 145);
+                context3.stroke();
+
+                context3.fillStyle = "white";
+                context3.font = "italic 520 25px verdana";
+                context3.fillText("___Replay___", 340, 152);
+              }
+            }
+          }
+        });
+
+        document.getElementById("btn").addEventListener("click", function () {
+          location.reload();
+        });
+      }
+    </script>
+  </body>
+</html>
