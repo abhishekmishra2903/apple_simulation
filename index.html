@@ -357,7 +357,7 @@ $(window).resize(function() {
           document
             .getElementById("btn3")
             .addEventListener("click", function () {
-              var n = setInterval(apple_move, 2);
+              var n = setInterval(apple_move, 5);
 
               function apple_move() {
                 if (i > 330) {
@@ -386,7 +386,7 @@ $(window).resize(function() {
                     900 - 1.8787 * i,
                     300 + 0.5656 * i
                   );
-                  i++;
+                  i+=2;
                   if (i == 331) {
                     document.getElementById("btn3").remove();
 
@@ -410,7 +410,7 @@ $(window).resize(function() {
           document
             .getElementById("btn2")
             .addEventListener("click", function () {
-              var n = setInterval(apple_move, 2);
+              var n = setInterval(apple_move, 10);
 
               function apple_move() {
                 if (k > 170) {
@@ -429,7 +429,7 @@ $(window).resize(function() {
                     1050 - 4.088 * k,
                     330 + 0.7412 * k
                   );
-                  k++;
+                  k+=2;
                   if (k == 171) {
                     document.getElementById("btn2").remove();
                     context3.beginPath();
@@ -452,7 +452,7 @@ $(window).resize(function() {
           document
             .getElementById("btn1")
             .addEventListener("click", function () {
-              var n = setInterval(apple_move, 2);
+              var n = setInterval(apple_move, 6);
 
               function apple_move() {
                 if (p > 220) {
@@ -466,7 +466,7 @@ $(window).resize(function() {
                   );
                   context4.drawImage(apple12, 900 - 2.523 * p, 180 + 1.109 * p);
                   context4.drawImage(apple13, 970 - 2.918 * p, 170 + p);
-                  p++;
+                  p+=2;
                   if (p == 221) {
                     document.getElementById("btn1").remove();
                     context3.beginPath();
